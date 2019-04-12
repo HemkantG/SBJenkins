@@ -1,0 +1,8 @@
+version: "2.1"
+services:
+  springbootapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "8090:8080"

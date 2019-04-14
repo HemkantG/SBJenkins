@@ -2,8 +2,15 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      steps {
-        sh 'echo "Build Step"'
+      agent{
+        docker{
+          image: 'maven:3-alpine'
+          args: '-v /home/hemkant/docker/.m2:/root/.m2'
+        }
+      }
+
+       steps {
+        sh 'mvn clean package'
       }
     }
     stage('Compile, Test and Package') {
